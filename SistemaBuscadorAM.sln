@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBuscadorAM", "SistemaBuscadorAM\SistemaBuscadorAM.csproj", "{BE9B959D-0A34-4E50-983A-F1AF5B651250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBuscadorAMTest", "SistemaBuscadorAMTest\SistemaBuscadorAMTest.csproj", "{ACBDDE26-4FA1-4A9A-A57B-95F7ADAD3F7C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE9B959D-0A34-4E50-983A-F1AF5B651250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE9B959D-0A34-4E50-983A-F1AF5B651250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE9B959D-0A34-4E50-983A-F1AF5B651250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE9B959D-0A34-4E50-983A-F1AF5B651250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACBDDE26-4FA1-4A9A-A57B-95F7ADAD3F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACBDDE26-4FA1-4A9A-A57B-95F7ADAD3F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACBDDE26-4FA1-4A9A-A57B-95F7ADAD3F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACBDDE26-4FA1-4A9A-A57B-95F7ADAD3F7C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {630BD99C-3150-4CB2-BED1-5DAAAEBE045F}
+	EndGlobalSection
+EndGlobal
