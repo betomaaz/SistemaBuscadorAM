@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SistemaBuscadorAM.Filters;
 using SistemaBuscadorAM.Models;
 using SistemaBuscadorAM.Repositories;
 using System;
@@ -25,36 +26,15 @@ namespace SistemaBuscadorAM.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Login(LoginViewModel model)
-        {
-            var repo = new LoginRepository();
-            if (ModelState.IsValid)
-            {
-                if (repo.UserExist(model.Usuario, model.Password))
-                {
-                    Guid sessionId = Guid.NewGuid();
-                    HttpContext.Session.SetString("sessionId", sessionId.ToString());
-                    Response.Cookies.Append("sessionId", sessionId.ToString());
-                    return View("Privacy");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Usuario o contraseña no es válido");
-                }
-            }
+        
 
-            return View("Index", model);
-        }
-
+        [ServiceFilter(typeof(SessionFilter))]
         public IActionResult Privacy()
         {
-            string sessionId = Request.Cookies["sessionId"];
-            if (string.IsNullOrEmpty(sessionId) || !sessionId.Equals(HttpContext.Session.GetString("sessionId")))
-            {
-                return RedirectToAction("Index");
-            }
+            //OnActionExecuting
+            
             return View();
+            //OnActionExecuted
         }
 
         public IActionResult Prueba()
@@ -72,5 +52,6 @@ namespace SistemaBuscadorAM.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

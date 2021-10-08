@@ -8,7 +8,7 @@ namespace SistemaBuscadorAM.Repositories
 {
     public class LoginRepository
     {
-        public bool UserExist(string usuario, string password)
+        public async Task<bool> UserExist(string usuario, string password)
         {
             bool result = false;
 
@@ -19,7 +19,7 @@ namespace SistemaBuscadorAM.Repositories
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@user", usuario));
             cmd.Parameters.Add(new SqlParameter("@password", password));
-            sql.Open();
+            await sql.OpenAsync();
             int bdResult = (int)cmd.ExecuteScalar();
 
             if (bdResult > 0)
