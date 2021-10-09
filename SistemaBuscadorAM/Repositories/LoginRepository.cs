@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -6,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace SistemaBuscadorAM.Repositories
 {
-    public class LoginRepository
+    public class LoginRepository : ILoginRepository
     {
+        public void SetSessionAndCookie(HttpContext context)
+        {
+            Guid sessionId = Guid.NewGuid();
+            context.Session.SetString("sessionId", sessionId.ToString());
+            context.Response.Cookies.Append("sessionId", sessionId.ToString());
+        }
+
         public async Task<bool> UserExist(string usuario, string password)
         {
             bool result = false;

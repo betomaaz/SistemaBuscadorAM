@@ -15,7 +15,7 @@ namespace SistemaBuscadorAM.Filters
             string sessionId = context.HttpContext.Request.Cookies["sessionId"];
             if (string.IsNullOrEmpty(sessionId) || !sessionId.Equals(context.HttpContext.Session.GetString("sessionId")))
             {
-                context.Result = new RedirectToActionResult("Index", "Home", null);
+                context.Result = new RedirectToActionResult("Index", "Login", null);
             }
         }
         public void OnActionExecuted(ActionExecutedContext context)

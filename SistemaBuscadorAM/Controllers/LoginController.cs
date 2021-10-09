@@ -11,6 +11,13 @@ namespace SistemaBuscadorAM.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly ILoginRepository _loginRepository;
+
+        public LoginController(ILoginRepository loginRepository)
+        {
+            _loginRepository = loginRepository;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -19,14 +26,11 @@ namespace SistemaBuscadorAM.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            var repo = new LoginRepository();
             if (ModelState.IsValid)
             {
-                if (await repo.UserExist(model.Usuario, model.Password))
+                if (await _loginRepository.UserExist(model.Usuario, model.Password))
                 {
-                    Guid sessionId = Guid.NewGuid();
-                    HttpContext.Session.SetString("sessionId", sessionId.ToString());
-                    Response.Cookies.Append("sessionId", sessionId.ToString());
+                    _loginRepository.SetSessionAndCookie(HttpContext);
                     return RedirectToAction("Index","Home");
                 }
                 else

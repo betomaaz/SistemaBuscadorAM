@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace SistemaBuscadorAM.Controllers
 {
+    [ServiceFilter(typeof(SessionFilter))]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -25,10 +26,7 @@ namespace SistemaBuscadorAM.Controllers
         {
             return View();
         }
-
-        
-
-        [ServiceFilter(typeof(SessionFilter))]
+                        
         public IActionResult Privacy()
         {
             //OnActionExecuting
