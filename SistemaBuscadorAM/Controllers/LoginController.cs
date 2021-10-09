@@ -35,7 +35,7 @@ namespace SistemaBuscadorAM.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Usuario o contraseña no es válido");
+                    ModelState.AddModelError(string.Empty, "Usuario o contraseña inválida");
                 }
             }
 
